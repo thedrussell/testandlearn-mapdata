@@ -1,19 +1,17 @@
-import mapboxgl from 'mapbox-gl';
+import { Map, NavigationControl, Popup } from 'mapbox-gl';
 
 export function createMap({ onFeatures }) {
-	// Set the Mapbox access token
-	mapboxgl.accessToken = 'pk.eyJ1IjoidGhlZHJ1c3NlbGwyIiwiYSI6ImNtM3N3bmJwbDAyYm4ya3BkY2RmanRoNzAifQ.9RdLPI_IH74FNuUmleNj9g'; // Replace with your Mapbox Access Token
-	// Initialize the map
-	const map = new mapboxgl.Map({
+	const map = new Map({
 		container: 'mapboxgl-map',
 		style: 'mapbox://styles/thedrussell2/cm3sxbdv8004a01si9shr8vtg',
 		center: [-3, 54],
 		zoom: 4.5,
 		maxZoom: 14,
 		minZoom: 3,
+		accessToken: 'pk.eyJ1IjoidGhlZHJ1c3NlbGwyIiwiYSI6ImNtM3N3bmJwbDAyYm4ya3BkY2RmanRoNzAifQ.9RdLPI_IH74FNuUmleNj9g',
 	});
 
-	map.addControl(new mapboxgl.NavigationControl({
+	map.addControl(new NavigationControl({
 		showCompass: false,
 		showZoom: true,
 	}));
@@ -95,7 +93,7 @@ export function createMap({ onFeatures }) {
 			}
 		}
 
-		new mapboxgl.Popup()
+		new Popup()
 			.setLngLat(coordinates)
 			.setHTML(contents)
 			.addTo(map)

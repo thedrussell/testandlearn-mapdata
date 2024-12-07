@@ -10,7 +10,6 @@
 	let features;
 
 	const onFeatures = (features) => {
-		console.log('got features', features);
 		const trialsSet = new Set();
 		for (let feature of features) {
 			trialsSet.add(feature.properties.Trial);
