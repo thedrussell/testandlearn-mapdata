@@ -2,6 +2,7 @@
 	let { onUpdate, trials=[], providers=[] } = $props();
 	let isOpen = $state(false);
 	let activeFilterValues = $state([]);
+	const toKey = (type, value) => `${type}.${value}`;
 	const handleHeaderClick = (ev) => {
 		ev.preventDefault();
 		ev.stopPropagation();
@@ -13,17 +14,30 @@
 		activeFilterValues = [];
 		onUpdate(activeFilterValues);
 	};
-	const isFilteringForValue = (value) => {
-		return activeFilterValues.includes(value);
+	const isFilteringFor = (type, value) => {
+		return activeFilterValues.includes(toKey(type, value));
 	};
-	const handleInputChange = (ev) => {
-		const value = ev.target.value;
-		if (isFilteringForValue(value)) {
-			activeFilterValues = activeFilterValues.filter((item) => item !== value);
+	const handleTrialChange = (ev) => {
+		handleInputChange('Trial', ev.target.value);
+	};
+	const handleProviderChange = (ev) => {
+		handleInputChange('Provider', ev.target.value);
+	};
+	const handleInputChange = (type, value) => {
+		const key = toKey(type, value);
+		if (isFilteringFor(type, value)) {
+			activeFilterValues = activeFilterValues.filter((item) => item !== key);
 		} else {
-			activeFilterValues = [...activeFilterValues, value];
+			activeFilterValues = [...activeFilterValues, key];
 		}
-		onUpdate(activeFilterValues);
+		onUpdate({
+			trials: activeFilterValues
+				.filter((item) => item.startsWith('Trial.'))
+				.map((item) => item.replace('Trial.', '')),
+			providers: activeFilterValues
+				.filter((item) => item.startsWith('Provider.'))
+				.map((item) => item.replace('Provider.', '')),
+		});
 	};
 </script>
 
@@ -50,8 +64,8 @@
 								name={option}
 								value={option}
 								type="checkbox"
-								onchange={handleInputChange}
-								checked={isFilteringForValue(option)}
+								onchange={handleTrialChange}
+								checked={isFilteringFor('Trial', option)}
 							/>{option}</label>
 					{/each}
 				</div>
@@ -65,8 +79,8 @@
 								name={option}
 								value={option}
 								type="checkbox"
-								onchange={handleInputChange}
-								checked={isFilteringForValue(option)}
+								onchange={handleProviderChange}
+								checked={isFilteringFor('Provider', option)}
 							/>{option}</label>
 					{/each}
 				</div>

@@ -112,9 +112,15 @@ export function createMap({ onFeatures }) {
 	});
 
 	function updateFilter(data) {
-		console.log('update filter!', Array.from(data));
-		if (data.length) {
-			map.setFilter('trials', ['in', 'Trial', ...data]);
+		const filters = [];
+		if (data.trials.length) {
+			filters.push(['in', 'Trial', ...data.trials]);
+		}
+		if (data.providers.length) {
+			filters.push(['in', 'Provider', ...data.providers]);
+		}
+		if (filters.length) {
+			map.setFilter('trials', ['all', ...filters]);
 		} else {
 			map.setFilter('trials', null);
 		}
