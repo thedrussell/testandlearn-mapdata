@@ -8,7 +8,7 @@ export function createMap({ onFeatures }) {
 		zoom: 4.5,
 		maxZoom: 14,
 		minZoom: 3,
-		accessToken: 'pk.eyJ1IjoidGhlZHJ1c3NlbGwyIiwiYSI6ImNtM3N3bmJwbDAyYm4ya3BkY2RmanRoNzAifQ.9RdLPI_IH74FNuUmleNj9g',
+		accessToken: import.meta.env.VITE_MAPBOX_ACCESS_TOKEN,
 	});
 
 	map.addControl(new NavigationControl({
