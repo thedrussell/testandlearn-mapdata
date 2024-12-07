@@ -1,9 +1,10 @@
-import { Map, NavigationControl, Popup } from 'mapbox-gl';
+import { Map, NavigationControl, Popup, LngLatBounds } from 'mapbox-gl';
 
 export function createMap({ onFeatures }) {
 	const map = new Map({
 		container: 'mapboxgl-map',
 		style: 'mapbox://styles/thedrussell2/cm3sxbdv8004a01si9shr8vtg',
+		bounds: new LngLatBounds([-9, 49.5], [3, 59.5]),
 		center: [-3, 54],
 		zoom: 4.5,
 		maxZoom: 14,
