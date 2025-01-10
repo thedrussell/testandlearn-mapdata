@@ -70,7 +70,7 @@
 	{#if isOpen}
 		<div class="groups">
 			<div class="group" class:groupIsOpen={isTrialsOpen}>
-				<h3 class="group__title" onclick={handleTrialHeaderClick} onkeypress={handleTrialHeaderClick} role="button" tabindex="0">Trial type <ChevronDown /></h3>
+				<div class="group__title" onclick={handleTrialHeaderClick} onkeypress={handleTrialHeaderClick} role="button" tabindex="0">Trial type <ChevronDown /></div>
 				{#if isTrialsOpen}
 					<div class="group__list">
 						{#each trials as option}
@@ -87,7 +87,7 @@
 				{/if}
 			</div>
 			<div class="group" class:groupIsOpen={isProvidersOpen}>
-				<h3 class="group__title" onclick={handleProviderHeaderClick} onkeypress={handleProviderHeaderClick} role="button" tabindex="0">Provider <ChevronDown /></h3>
+				<div class="group__title" onclick={handleProviderHeaderClick} onkeypress={handleProviderHeaderClick} role="button" tabindex="0">Provider <ChevronDown /></div>
 				{#if isProvidersOpen}
 					<div class="group__list">
 						{#each providers as option}
@@ -207,6 +207,7 @@
 		display: flex;
 		gap: 8px;
 		cursor: pointer;
+		margin-bottom: 16px;
 	}
 	.group__title :global(svg) {
 		width: 15px;
