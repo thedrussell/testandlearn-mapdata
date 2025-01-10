@@ -1,6 +1,6 @@
 <script>
 	let { onUpdate, trials=[], providers=[] } = $props();
-	let isOpen = $state(false);
+	let isOpen = $state(window?.innerWidth || 0 > 600);
 	let activeFilterValues = $state([]);
 	const toKey = (type, value) => `${type}.${value}`;
 	const handleHeaderClick = (ev) => {
