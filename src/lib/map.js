@@ -1,4 +1,5 @@
 import { Map, NavigationControl, Popup, LngLatBounds } from 'mapbox-gl';
+import { colorKeyValList } from './colors.js';
 
 export function createMap({ onFeatures }) {
 	const map = new Map({
@@ -38,24 +39,7 @@ export function createMap({ onFeatures }) {
 				'circle-color': [
 					'match',
 					['get', 'Trial'],
-					'Outreach Health',
-					'#2BACD0',
-					'IPS',
-					'#F7D461',
-					'Personalised Budgets',
-					'#F0706B',
-					'Using Data to Prevent Homelessness',
-					'#14B8A6',
-					'Citadel',
-					'#0C4A6E',
-					'Systems-wide Evaluation',
-					'#78716C',
-					'Deep Dive Justice',
-					'#047857',
-					'Accommodate and Connect',
-					'#FB923C',
-					'Accommodation and Immigration Advice',
-					'#BE185D',
+					...colorKeyValList,
 					/* other */ '#E5E5E5'
 					]
 			}

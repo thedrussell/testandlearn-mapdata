@@ -1,5 +1,6 @@
 <script>
 	import ChevronDown from './ChevronDown.svelte';
+	import Dot from './Dot.svelte';
 	let { onUpdate, trials=[], providers=[] } = $props();
 	let isOpen = $state(window?.innerWidth || 0 > 600);
 	let isTrialsOpen = $state(true);
@@ -80,7 +81,7 @@
 									type="checkbox"
 									onchange={handleTrialChange}
 									checked={isFilteringFor('Trial', option)}
-								/>{option}</label>
+								/><Dot flavor={option} />{option}</label>
 						{/each}
 					</div>
 				{/if}
@@ -228,10 +229,12 @@
 		display: block;
 		font-size: 16px;
 		line-height: 1.4;
-		padding-left: 31px;
 		cursor: pointer;
 		padding-bottom: 8px;
 		user-select: none;
+		display: flex;
+		align-items: center;
+		gap: 8px;
 	}
 
 	/* Style the input for filter */
@@ -240,7 +243,8 @@
 		outline: 0;
 		width: 18px;
 		height: 18px;
-		margin: 0px 14px -3px -31px;
+		flex-shrink: 0;
+		flex-grow: 0;
 		cursor: pointer;
 	}
 
