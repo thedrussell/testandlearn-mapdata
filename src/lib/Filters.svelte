@@ -1,12 +1,25 @@
 <script>
+	import ChevronDown from './ChevronDown.svelte';
 	let { onUpdate, trials=[], providers=[] } = $props();
 	let isOpen = $state(window?.innerWidth || 0 > 600);
+	let isTrialsOpen = $state(true);
+	let isProvidersOpen = $state(false);
 	let activeFilterValues = $state([]);
 	const toKey = (type, value) => `${type}.${value}`;
 	const handleHeaderClick = (ev) => {
 		ev.preventDefault();
 		ev.stopPropagation();
 		isOpen = !isOpen;
+	};
+	const handleTrialHeaderClick = (ev) => {
+		ev.preventDefault();
+		ev.stopPropagation();
+		isTrialsOpen = !isTrialsOpen;
+	};
+	const handleProviderHeaderClick = (ev) => {
+		ev.preventDefault();
+		ev.stopPropagation();
+		isProvidersOpen = !isProvidersOpen;
 	};
 	const clearFilters = (ev) => {
 		ev.preventDefault();
@@ -45,9 +58,7 @@
 	<div class="filters__header" onclick={handleHeaderClick} onkeypress={handleHeaderClick} role="button" tabindex="0">
 		<h2 class="filters__title">Filters {activeFilterValues.length > 0 ? `(${activeFilterValues.length})` : ``}</h2>
 		<div class="filters__icon">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 11">
-				<path fill="none" fill-rule="evenodd" stroke="#333" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 9.334L8.562 1l7.249 7.989"/>
-			</svg>
+			<ChevronDown />
 </div>
 		{#if activeFilterValues.length > 0}
 			<button class="filters__clear" onclick={clearFilters}>Clear filters</button>
@@ -55,35 +66,39 @@
 	</div>
 	{#if isOpen}
 		<div class="groups">
-			<div class="group">
-				<h3 class="group__title">Trial type</h3>
-				<div class="group__list">
-					{#each trials as option}
-						<label>
-							<input
-								name={option}
-								value={option}
-								type="checkbox"
-								onchange={handleTrialChange}
-								checked={isFilteringFor('Trial', option)}
-							/>{option}</label>
-					{/each}
-				</div>
+			<div class="group" class:groupIsOpen={isTrialsOpen}>
+				<h3 class="group__title" onclick={handleTrialHeaderClick} onkeypress={handleTrialHeaderClick} role="button" tabindex="0">Trial type <ChevronDown /></h3>
+				{#if isTrialsOpen}
+					<div class="group__list">
+						{#each trials as option}
+							<label>
+								<input
+									name={option}
+									value={option}
+									type="checkbox"
+									onchange={handleTrialChange}
+									checked={isFilteringFor('Trial', option)}
+								/>{option}</label>
+						{/each}
+					</div>
+				{/if}
 			</div>
-			<div class="group">
-				<h3 class="group__title">Provider</h3>
-				<div class="group__list">
-					{#each providers as option}
-						<label>
-							<input
-								name={option}
-								value={option}
-								type="checkbox"
-								onchange={handleProviderChange}
-								checked={isFilteringFor('Provider', option)}
-							/>{option}</label>
-					{/each}
-				</div>
+			<div class="group" class:groupIsOpen={isProvidersOpen}>
+				<h3 class="group__title" onclick={handleProviderHeaderClick} onkeypress={handleProviderHeaderClick} role="button" tabindex="0">Provider <ChevronDown /></h3>
+				{#if isProvidersOpen}
+					<div class="group__list">
+						{#each providers as option}
+							<label>
+								<input
+									name={option}
+									value={option}
+									type="checkbox"
+									onchange={handleProviderChange}
+									checked={isFilteringFor('Provider', option)}
+								/>{option}</label>
+						{/each}
+					</div>
+				{/if}
 			</div>
 		</div>
 	{/if}
@@ -101,10 +116,7 @@
 		max-width: 420px;
 		overflow-y: auto;
 		overflow-x: hidden;
-	}
-
-	.isOpen {
-		bottom: 26px;
+		max-height: calc(100% - 52px);
 	}
 
 	.filters__header {
@@ -185,6 +197,19 @@
 		font-weight: 700;
 		font-size: 16px;
 		line-height: 24px;
+		display: flex;
+		gap: 8px;
+		cursor: pointer;
+	}
+	.group__title :global(svg) {
+		width: 15px;
+		display: flex;
+		align-items: center;
+		transition: transform .2s ease-in-out;
+	}
+
+	.groupIsOpen .group__title :global(svg) {
+		transform: rotate(180deg);
 	}
 
 	/* The div containing all the checkboxes and labels */
