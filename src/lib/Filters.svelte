@@ -25,7 +25,7 @@
 		ev.preventDefault();
 		ev.stopPropagation();
 		activeFilterValues = [];
-		onUpdate(activeFilterValues);
+		onUpdate({ trials: [], providers: [] });
 	};
 	const isFilteringFor = (type, value) => {
 		return activeFilterValues.includes(toKey(type, value));
