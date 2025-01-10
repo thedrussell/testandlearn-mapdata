@@ -55,11 +55,13 @@
 </script>
 
 <div class="filters" class:isOpen>
-	<div class="filters__header" onclick={handleHeaderClick} onkeypress={handleHeaderClick} role="button" tabindex="0">
-		<h2 class="filters__title">Filters {activeFilterValues.length > 0 ? `(${activeFilterValues.length})` : ``}</h2>
-		<div class="filters__icon">
-			<ChevronDown />
-</div>
+	<div class="filters__header">
+		<div class="filters__headerbar" onclick={handleHeaderClick} onkeypress={handleHeaderClick} role="button" tabindex="0">
+			<h2 class="filters__title">Filters {activeFilterValues.length > 0 ? `(${activeFilterValues.length})` : ``}</h2>
+			<div class="filters__icon">
+				<ChevronDown />
+			</div>
+		</div>
 		{#if activeFilterValues.length > 0}
 			<button class="filters__clear" onclick={clearFilters}>Clear filters</button>
 		{/if}
@@ -122,23 +124,27 @@
 	.filters__header {
 		position: sticky;
 		top: 0;
+		background: white;
+		border-bottom: 1px solid #f2f2f2;
+		padding: 0 0 7px;
+	}
+	.filters__headerbar {
 		display: flex;
 		flex-wrap: wrap;
 		cursor: pointer;
-		padding: 12px 14px;
-		background: white;
-		border-bottom: 1px solid #f2f2f2;
+		padding: 12px 14px 0;
 	}
 
 	.filters__clear {
 		appearance: none;
+		cursor: pointer;
 		font: inherit;
 		background: none;
 		border: none;
 		text-align: left;
-		padding: 0;
+		padding: 10px 14px 10px 14px;
 		flex-basis: 100%;
-		margin-top: 15px;
+		margin-top: 5px;
 		font-size: .7rem;
 		font-weight: bold;
 		margin-bottom: 0;
