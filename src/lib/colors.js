@@ -6,7 +6,7 @@ export const colors = {
 	'Citadel': '#0C4A6E',
 	'Systems-wide Evaluation': '#78716C',
 	'Deep Dive Justice': '#047857',
-	'Accommodate and Connect': '#FB923C',
+	'Accomodate or Connect': '#FB923C',
 	'Accommodation and Immigration Advice': '#BE185D',
 };
 
