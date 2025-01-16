@@ -4,7 +4,7 @@
 
 Replace the file `public/tl.geojson` with the new file.
 
-If any new categories have been added, the `colors.js` file need to be updated.
+If any new categories have been added, the `src/lib/colors.js` file need to be updated.
 
 ## Setup
 
