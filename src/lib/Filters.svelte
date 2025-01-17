@@ -127,13 +127,14 @@
 		top: 0;
 		background: white;
 		border-bottom: 1px solid #f2f2f2;
-		padding: 0 0 7px;
+		padding: 0;
 	}
 	.filters__headerbar {
 		display: flex;
+		align-items: center;
 		flex-wrap: wrap;
 		cursor: pointer;
-		padding: 12px 14px 0;
+		padding: 12px 14px 7px;
 	}
 
 	.filters__clear {
