@@ -162,7 +162,7 @@
 		align-items: center;
 		transition: transform .2s ease-in-out;
 	}
-	.filters__icon svg {
+	.filters__icon :global(svg) {
 		width: 100%;
 	}
 
