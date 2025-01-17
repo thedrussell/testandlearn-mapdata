@@ -156,9 +156,14 @@
 
 	.filters__icon {
 		width: 18px;
+		height: 12px;
+		position: relative;
 		display: flex;
 		align-items: center;
 		transition: transform .2s ease-in-out;
+	}
+	.filters__icon svg {
+		width: 100%;
 	}
 
 	.isOpen .filters__icon {
