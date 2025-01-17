@@ -2,7 +2,7 @@
 	import ChevronDown from './ChevronDown.svelte';
 	import Dot from './Dot.svelte';
 	let { onUpdate, trials=[], providers=[] } = $props();
-	let isOpen = $state(window?.innerWidth || 0 > 600);
+	let isOpen = $state((window?.innerWidth || 0) > 600);
 	let isTrialsOpen = $state(true);
 	let isProvidersOpen = $state(false);
 	let activeFilterValues = $state([]);
