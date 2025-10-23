@@ -67,6 +67,7 @@ export function createMap({ onFeatures }) {
 			`<div style="margin-bottom: 10px; margin-right: 10px;"><a style="color: #ee716c; font-size: 1rem; font-weight: 500; line-height: 1.5; display: block;" target="_blank" rel="noopener noreferrer" href="${info.url}">${info.trial}</a></div>`,
 			`<div style="font-weight: normal; font-size: 0.8rem;">Area: ${info.area}</div>`,
 			`<div style="font-weight: normal; font-size: 0.8rem;">Provided by: ${info.provider}</div>`,
+			`<div style="font-weight: normal; font-size: 0.8rem;">Participants: ${info.participants}</div>`, // Dave added this
 			`</div>`,
 		].join('');
 
