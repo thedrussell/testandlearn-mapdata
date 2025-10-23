@@ -58,6 +58,7 @@ export function createMap({ onFeatures }) {
 			url: ev.features[0].properties.URL,
 			onsCode: ev.features[0].properties.onsCode,
 			area: ev.features[0].properties.Area,
+			participants: ev.features[0].properties.Participants, // Dave added this line
 		};
 
 		const subtitle = info.provider === info.area ? `${info.provider}` : `${info.provider}, ${info.area}`;
