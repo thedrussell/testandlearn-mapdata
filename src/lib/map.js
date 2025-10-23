@@ -61,7 +61,7 @@ export function createMap({ onFeatures }) {
 			participants: ev.features[0].properties.Participants, // Dave added this line
 		};
 
-		const subtitle = info.provider === info.area ? `${info.provider}` : `${info.provider}, ${info.area}`;
+		const subtitle = info.provider === info.area ? `${info.provider}` : `${info.provider}, ${info.area}, ${info.participants}`; // D added
 		const contents = [
 			`<div style="padding: 10px">`,
 			`<div style="margin-bottom: 10px; margin-right: 10px;"><a style="color: #ee716c; font-size: 1rem; font-weight: 500; line-height: 1.5; display: block;" target="_blank" rel="noopener noreferrer" href="${info.url}">${info.trial}</a></div>`,
